@@ -20,12 +20,6 @@ namespace ImageQuantization
             int choice = Console.Read();
             if (choice == '2')
             {
-                /**
-                 * uncomment to run full benchmark,
-                 * place all pictures in the project directory
-                 */
-
-                //    /*
                 Console.WriteLine();
                 List<KeyValuePair<string, int>> paths = new List<KeyValuePair<string, int>>();
 
@@ -92,7 +86,7 @@ namespace ImageQuantization
                     stopwatch.Reset();
                     //ImageOperations.DisplayImage(output, pictureBox2);
 
-                    saveImage(@imgname, output);
+                    saveImage(@imgname, ref output);
 
                     outfile.WriteLine("====================================");
                     Console.WriteLine("====================================");
@@ -100,11 +94,11 @@ namespace ImageQuantization
 
                 outfile.Close();
                 file.Close();
-                // */
+                this.Close();
             }
         }
 
-        private void saveImage(string name, Pixel[,] img)
+        private void saveImage(string name, ref Pixel[,] img)
         {
             int Height = img.GetLength(0);
             int Width = img.GetLength(1);
